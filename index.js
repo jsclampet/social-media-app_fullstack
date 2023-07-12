@@ -18,7 +18,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
-app.use(helmet.crossOriginEmbedderPolicy({ policy: "cross-origin" }));
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
@@ -47,3 +47,12 @@ mongoose
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
   })
   .catch((error) => console.log(`${error} did not connect`));
+
+/* 
+
+      LOOK UP ERROR 
+        Cross-Origin-Embedder-Policy does not support the "cross-origin" policy
+
+      May have to dive into libraries and learn about each of these imports
+
+  */
